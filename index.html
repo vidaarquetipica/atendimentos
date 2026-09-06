@@ -10,25 +10,22 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4/fonts/remixicon.css">
 <style>
   :root {
-    --bg: #fbf9f5;
-    --bg-soft: #f4f0e6;
+    --bg: #faf7f2;
+    --bg-soft: #f2ebe1;
     --card: #ffffff;
-    --text: #2b3227;
-    --text-soft: #485242;
-    --muted: #6e7867;
-    --moss: #425235;
-    --moss-dark: #2f3c25;
-    --moss-soft: rgba(66, 82, 53, 0.08);
-    --gold: #aa8543;
-    --gold-dark: #8e6b2e;
-    --gold-soft: rgba(170, 133, 67, 0.12);
-    --gold-light: #d6b77c;
-    --purple: #7a6690;
-    --purple-soft: rgba(122, 102, 144, 0.09);
-    --border: rgba(66, 82, 53, 0.16);
-    --border-gold: rgba(170, 133, 67, 0.3);
-    --shadow-sm: 0 4px 12px rgba(43, 50, 39, 0.05);
-    --shadow-md: 0 12px 28px rgba(43, 50, 39, 0.08);
+    --text: #2c3328;
+    --text-soft: #4a5445;
+    --muted: #737d6e;
+    --moss: #384630;
+    --moss-dark: #25311f;
+    --moss-soft: rgba(56, 70, 48, 0.07);
+    --gold: #c19a5b;
+    --gold-dark: #9e7a3e;
+    --gold-soft: rgba(193, 154, 91, 0.12);
+    --border: rgba(56, 70, 48, 0.12);
+    --border-gold: rgba(193, 154, 91, 0.3);
+    --shadow-sm: 0 4px 20px rgba(44, 51, 40, 0.04);
+    --shadow-md: 0 12px 32px rgba(44, 51, 40, 0.08);
   }
 
   * {
@@ -64,12 +61,12 @@
     padding: 0 20px;
   }
 
-  /* ===== HEADER & HERO REDUZIDO ===== */
+  /* ===== HERO REDUZIDO & LÓTUS ===== */
   .hero {
-    padding: 36px 0 24px;
+    padding: 40px 0 28px;
     text-align: center;
     position: relative;
-    background: linear-gradient(180deg, #f5f0e6 0%, var(--bg) 100%);
+    background: linear-gradient(180deg, #f4eee5 0%, var(--bg) 100%);
     border-bottom: 1px solid var(--border);
   }
 
@@ -80,15 +77,15 @@
     margin-bottom: 12px;
   }
 
-  .lotus-icon {
-    width: 52px;
-    height: 52px;
-    margin-bottom: 8px;
-    filter: drop-shadow(0 2px 4px rgba(170, 133, 67, 0.2));
+  .lotus-symbol {
+    width: 58px;
+    height: 58px;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 2px 6px rgba(193, 154, 91, 0.25));
   }
 
   .hero h1 {
-    font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+    font-size: clamp(2.3rem, 4.8vw, 3.4rem);
     color: var(--moss-dark);
     letter-spacing: 0.5px;
     font-weight: 700;
@@ -96,7 +93,7 @@
 
   .hero-subtitle {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    font-size: clamp(1.15rem, 2vw, 1.4rem);
     color: var(--gold-dark);
     font-style: italic;
     font-weight: 600;
@@ -111,19 +108,19 @@
     font-weight: 500;
   }
 
-  /* ===== ATENDIMENTOS SEÇÃO ===== */
+  /* ===== ATENDIMENTOS ===== */
   .atendimentos {
-    padding: 32px 0 64px;
+    padding: 36px 0 64px;
   }
 
   .section-intro {
     text-align: center;
     max-width: 600px;
-    margin: 0 auto 32px;
+    margin: 0 auto 36px;
   }
 
   .section-intro h2 {
-    font-size: clamp(1.7rem, 3vw, 2.2rem);
+    font-size: clamp(1.8rem, 3.2vw, 2.3rem);
     color: var(--moss);
     margin-bottom: 6px;
   }
@@ -133,18 +130,18 @@
     font-weight: 500;
   }
 
-  /* LAYOUT DE CARDS: 3 EM CIMA, 2 EM BAIXO */
+  /* LAYOUT: 3 MAPAS EM CIMA, 2 EM BAIXO */
   .atendimentos-grid-top {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    margin-bottom: 24px;
+    gap: 28px;
+    margin-bottom: 28px;
   }
 
   .atendimentos-grid-bottom {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+    gap: 28px;
     max-width: 760px;
     margin: 0 auto;
   }
@@ -152,9 +149,9 @@
   .card {
     background: var(--card);
     border: 1px solid var(--border);
-    border-radius: 16px;
+    border-radius: 18px;
     overflow: hidden;
-    transition: all 0.35 ease;
+    transition: all 0.35s ease;
     display: flex;
     flex-direction: column;
     box-shadow: var(--shadow-sm);
@@ -168,22 +165,36 @@
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, var(--moss), var(--gold), var(--purple));
+    background: linear-gradient(90deg, var(--moss), var(--gold));
     opacity: 0.85;
+    z-index: 2;
   }
 
   .card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-6px);
     box-shadow: var(--shadow-md);
-    border-color: var(--gold);
+    border-color: var(--border-gold);
+  }
+
+  /* FORMATAÇÃO DE IMAGEM QUADRADA (INSTAGRAM 1:1) SEM CORTAR TEXTOS */
+  .card-image-wrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: var(--bg-soft);
+    border-bottom: 1px solid var(--border);
   }
 
   .card-image {
     width: 100%;
-    height: 190px;
+    height: 100%;
     object-fit: cover;
     display: block;
-    background: var(--bg-soft);
+    transition: transform 0.4s ease;
+  }
+
+  .card:hover .card-image {
+    transform: scale(1.02);
   }
 
   .card-body {
@@ -222,8 +233,8 @@
   }
 
   .card-icon.purple {
-    background: var(--purple-soft);
-    color: var(--purple);
+    background: rgba(122, 102, 144, 0.1);
+    color: #7a6690;
   }
 
   .card h3 {
@@ -240,59 +251,37 @@
 
   .tag {
     font-size: 0.75rem;
-    padding: 3px 10px;
+    padding: 4px 10px;
     border-radius: 14px;
     background: var(--bg-soft);
     color: var(--moss-dark);
     font-weight: 600;
-    border: 1px solid rgba(66, 82, 53, 0.1);
+    border: 1px solid rgba(56, 70, 48, 0.08);
   }
 
   .card p {
     color: var(--text-soft);
     font-size: 0.96rem;
     font-weight: 500;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
     flex: 1;
   }
 
   .card-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     padding-top: 16px;
     border-top: 1px solid var(--border);
-  }
-
-  .price-wrapper {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .price-label {
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--muted);
-    font-weight: 600;
-  }
-
-  .price {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem;
-    color: var(--gold-dark);
-    font-weight: 700;
-    line-height: 1;
   }
 
   .btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
-    padding: 10px 18px;
-    border-radius: 8px;
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 10px;
     font-family: 'Karla', sans-serif;
-    font-size: 0.88rem;
+    font-size: 0.92rem;
     font-weight: 600;
     text-decoration: none;
     letter-spacing: 0.3px;
@@ -304,17 +293,16 @@
   .btn-primary {
     background: var(--moss);
     color: #ffffff;
-    box-shadow: 0 4px 10px rgba(66, 82, 53, 0.2);
+    box-shadow: 0 4px 12px rgba(56, 70, 48, 0.18);
   }
 
   .btn-primary:hover {
     background: var(--moss-dark);
-    transform: translateY(-1px);
-    box-shadow: 0 6px 14px rgba(66, 82, 53, 0.3);
+    box-shadow: 0 6px 16px rgba(56, 70, 48, 0.28);
   }
 
   .btn-primary i {
-    font-size: 15px;
+    font-size: 16px;
     transition: transform 0.25s ease;
   }
 
@@ -341,7 +329,7 @@
   }
 
   .sobre-conteudo h2 {
-    font-size: clamp(2rem, 3.8vw, 2.6rem);
+    font-size: clamp(2.1rem, 4vw, 2.7rem);
     margin-bottom: 20px;
     text-align: center;
     color: var(--moss-dark);
@@ -371,7 +359,7 @@
     margin: 20px 0 32px;
     padding: 24px;
     background: var(--card);
-    border-radius: 14px;
+    border-radius: 16px;
     border: 1px solid var(--border-gold);
     box-shadow: var(--shadow-sm);
   }
@@ -407,14 +395,16 @@
   }
 
   .sobre-imagem {
-    max-width: 480px;
+    max-width: 460px;
     margin: 0 auto;
     position: relative;
   }
 
   .sobre-imagem img {
     width: 100%;
-    border-radius: 16px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 18px;
     display: block;
     box-shadow: var(--shadow-md);
     border: 1px solid var(--border);
@@ -423,14 +413,14 @@
   .sobre-imagem::after {
     content: '';
     position: absolute;
-    bottom: -12px;
-    right: -12px;
+    bottom: -10px;
+    right: -10px;
     width: 100%;
     height: 100%;
-    border: 2px solid var(--gold-light);
-    border-radius: 16px;
+    border: 2px solid var(--gold);
+    border-radius: 18px;
     z-index: -1;
-    opacity: 0.6;
+    opacity: 0.5;
   }
 
   /* ===== DEPOIMENTOS ===== */
@@ -461,14 +451,13 @@
 
   .depoimento-item {
     overflow: hidden;
-    border-radius: 12px;
+    border-radius: 14px;
     border: 1px solid var(--border);
     box-shadow: var(--shadow-sm);
   }
 
   .depoimento-img {
     width: 100%;
-    border-radius: 12px;
     display: block;
     transition: transform 0.35s ease;
   }
@@ -479,16 +468,17 @@
 
   /* ===== FOOTER ===== */
   footer {
-    padding: 40px 0;
+    padding: 44px 0;
     text-align: center;
     border-top: 1px solid var(--border);
     background: var(--bg-soft);
   }
 
-  .footer-icon {
-    color: var(--gold-dark);
-    font-size: 26px;
-    margin-bottom: 8px;
+  .footer-lotus {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 10px;
+    opacity: 0.9;
   }
 
   footer p {
@@ -523,24 +513,21 @@
       grid-template-columns: 1fr;
       gap: 16px;
     }
-
-    .card-footer {
-      flex-direction: row;
-      justify-content: space-between;
-    }
   }
 </style>
 </head>
 <body>
 
+  <!-- ===== HERO COM FLOR DE LÓTUS 🪷 ===== -->
   <section class="hero">
     <div class="container">
       <div class="brand-header">
-        <svg class="lotus-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M32 8C32 8 38 20 38 31C38 37.5 35 43 32 45C29 43 26 37.5 26 31C26 20 32 8 32 8Z" fill="#aa8543"/>
-          <path d="M32 18C36 24 44.5 29 50 33C53 35.5 53.5 39.5 50.5 42C46.5 45.5 39 45 32 45C25 45 17.5 45.5 13.5 42C10.5 39.5 11 35.5 14 33C19.5 29 28 24 32 18Z" fill="#d6b77c" opacity="0.85"/>
-          <path d="M32 25C38.5 29.5 49.5 35 56 36.5C60 37.5 60.5 41.5 57 44C51 48 40.5 46 32 46C23.5 46 13 48 7 44C3.5 41.5 4 37.5 8 36.5C14.5 35 25.5 29.5 32 25Z" fill="#aa8543" opacity="0.95"/>
-          <path d="M18 47C23 49.5 27.5 50 32 50C36.5 50 41 49.5 46 47C49.5 45.5 52 48.5 49.5 51C45 55.5 38.5 56.5 32 56.5C25.5 56.5 19 55.5 14.5 51C12 48.5 14.5 45.5 18 47Z" fill="#425235"/>
+        <!-- Ícone da Flor de Lótus 🪷 -->
+        <svg class="lotus-symbol" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M32 10C32 10 37.5 20.5 37.5 30C37.5 35.8 35 41 32 43C29 41 26.5 35.8 26.5 30C26.5 20.5 32 10 32 10Z" fill="#c19a5b"/>
+          <path d="M32 19C35.5 24.5 43 29 48 32.8C50.8 35 51.2 38.5 48.5 40.8C45 43.8 38.2 43.5 32 43.5C25.8 43.5 19 43.8 15.5 40.8C12.8 38.5 13.2 35 16 32.8C21 29 28.5 24.5 32 19Z" fill="#d8b475"/>
+          <path d="M32 25.5C37.8 29.5 47.8 34.5 53.8 35.8C57.2 36.8 57.8 40.2 54.8 42.5C49.5 46 40 44.5 32 44.5C24 44.5 14.5 46 9.2 42.5C6.2 40.2 6.8 36.8 10.2 35.8C16.2 34.5 26.2 29.5 32 25.5Z" fill="#a88144"/>
+          <path d="M18.5 45C23 47.2 27.2 48 32 48C36.8 48 41 47.2 45.5 45C48.8 43.5 51 46.2 48.8 48.5C44.8 52.5 38.8 53.5 32 53.5C25.2 53.5 19.2 52.5 15.2 48.5C13 46.2 15.2 43.5 18.5 45Z" fill="#384630"/>
         </svg>
         <h1>Vida Arquetípica</h1>
         <p class="hero-subtitle">Meus Atendimentos &amp; Orientação Pessoal</p>
@@ -549,6 +536,7 @@
     </div>
   </section>
 
+  <!-- ===== ATENDIMENTOS ===== -->
   <section class="atendimentos">
     <div class="container">
       <div class="section-intro">
@@ -556,10 +544,14 @@
         <p>Selecione a opção que melhor atende ao seu momento atual:</p>
       </div>
 
+      <!-- PRIMEIRA FILEIRA: 3 MAPAS -->
       <div class="atendimentos-grid-top">
 
+        <!-- Mapa da Essência -->
         <article class="card">
-          <img src="mapadaessencia.jpeg" alt="Mapa da Essência" class="card-image" onerror="this.style.display='none'">
+          <div class="card-image-wrapper">
+            <img src="mapadaessencia.jpeg" alt="Mapa da Essência" class="card-image" onerror="this.style.display='none'">
+          </div>
           <div class="card-body">
             <div class="card-header">
               <div class="card-icon moss">
@@ -574,20 +566,19 @@
             </div>
             <p>Um mergulho profundo em quem você é, revelando seus padrões e destravando o que impede seu alinhamento pessoal.</p>
             <div class="card-footer">
-              <div class="price-wrapper">
-                <span class="price-label">Investimento</span>
-                <span class="price">R$ 249,90</span>
-              </div>
               <a href="https://vidaarquetipica.github.io/mapadaessencia/" class="btn btn-primary" target="_blank" rel="noopener">
-                Conhecer
+                Conhecer Atendimento
                 <i class="ri-arrow-right-line"></i>
               </a>
             </div>
           </div>
         </article>
 
+        <!-- Mapa da Carreira -->
         <article class="card">
-          <img src="mapadacarreira.jpeg" alt="Mapa da Carreira" class="card-image" onerror="this.style.display='none'">
+          <div class="card-image-wrapper">
+            <img src="mapadacarreira.jpeg" alt="Mapa da Carreira" class="card-image" onerror="this.style.display='none'">
+          </div>
           <div class="card-body">
             <div class="card-header">
               <div class="card-icon gold">
@@ -602,20 +593,19 @@
             </div>
             <p>Compreenda seus potenciais profissionais, descubra novos caminhos e direcione sua vida profissional com clareza.</p>
             <div class="card-footer">
-              <div class="price-wrapper">
-                <span class="price-label">Investimento</span>
-                <span class="price">R$ 249,90</span>
-              </div>
               <a href="https://vidaarquetipica.github.io/mapadacarreira/" class="btn btn-primary" target="_blank" rel="noopener">
-                Conhecer
+                Conhecer Atendimento
                 <i class="ri-arrow-right-line"></i>
               </a>
             </div>
           </div>
         </article>
 
+        <!-- Mapa do Amor -->
         <article class="card">
-          <img src="mapadoamor.jpeg" alt="Mapa do Amor" class="card-image" onerror="this.style.display='none'">
+          <div class="card-image-wrapper">
+            <img src="mapadoamor.jpeg" alt="Mapa do Amor" class="card-image" onerror="this.style.display='none'">
+          </div>
           <div class="card-body">
             <div class="card-header">
               <div class="card-icon purple">
@@ -630,12 +620,8 @@
             </div>
             <p>Uma leitura voltada para a sua dinâmica afetiva, revelando padrões amorosos e o caminho para relações mais harmônicas.</p>
             <div class="card-footer">
-              <div class="price-wrapper">
-                <span class="price-label">Investimento</span>
-                <span class="price">R$ 249,90</span>
-              </div>
               <a href="https://vidaarquetipica.github.io/mapadoamor/" class="btn btn-primary" target="_blank" rel="noopener">
-                Conhecer
+                Conhecer Atendimento
                 <i class="ri-arrow-right-line"></i>
               </a>
             </div>
@@ -644,10 +630,14 @@
 
       </div>
 
+      <!-- SEGUNDA FILEIRA: 2 ATENDIMENTOS -->
       <div class="atendimentos-grid-bottom">
 
+        <!-- Combo Arquetípico -->
         <article class="card">
-          <img src="combo.jpeg" alt="Combo Arquetípico Personalizado" class="card-image" onerror="this.style.display='none'">
+          <div class="card-image-wrapper">
+            <img src="combo.jpeg" alt="Combo Arquetípico Personalizado" class="card-image" onerror="this.style.display='none'">
+          </div>
           <div class="card-body">
             <div class="card-header">
               <div class="card-icon gold">
@@ -658,24 +648,23 @@
             <div class="card-tags">
               <span class="tag">Personalizado</span>
               <span class="tag">Arquétipos</span>
-              <span class="tag">Acessível</span>
+              <span class="tag">Direcionado</span>
             </div>
-            <p>Combo de arquétipos criado exclusivamente para você. A opção ideal e acessível para começar a ativar o seu campo arquetípico.</p>
+            <p>Combo de arquétipos criado exclusivamente para você. A opção ideal para começar a ativar o seu campo arquetípico.</p>
             <div class="card-footer">
-              <div class="price-wrapper">
-                <span class="price-label">Investimento</span>
-                <span class="price">R$ 78,90</span>
-              </div>
               <a href="https://vidaarquetipica.github.io/combopersonalizado/" class="btn btn-primary" target="_blank" rel="noopener">
-                Conhecer
+                Conhecer Atendimento
                 <i class="ri-arrow-right-line"></i>
               </a>
             </div>
           </div>
         </article>
 
+        <!-- Tarô -->
         <article class="card">
-          <img src="taro.jpeg" alt="Tarô" class="card-image" onerror="this.style.display='none'">
+          <div class="card-image-wrapper">
+            <img src="taro.jpeg" alt="Tarô" class="card-image" onerror="this.style.display='none'">
+          </div>
           <div class="card-body">
             <div class="card-header">
               <div class="card-icon purple">
@@ -690,12 +679,8 @@
             </div>
             <p>Leitura terapêutica para obter direcionamento imediato e esclarecer questões pontuais da sua vida no momento atual.</p>
             <div class="card-footer">
-              <div class="price-wrapper">
-                <span class="price-label">Opções</span>
-                <span class="price" style="font-size: 1.25rem;">Ver Tabela</span>
-              </div>
               <a href="https://vidaarquetipica.github.io/tarociganadaestrada/" class="btn btn-primary" target="_blank" rel="noopener">
-                Conhecer
+                Conhecer Atendimento
                 <i class="ri-arrow-right-line"></i>
               </a>
             </div>
@@ -706,6 +691,7 @@
     </div>
   </section>
 
+  <!-- ===== SOBRE ÉRIKA ===== -->
   <section class="sobre-erika">
     <div class="container sobre-container">
       <div class="sobre-conteudo">
@@ -738,12 +724,14 @@
         <p>Por isso, cada leitura é feita sob medida para o seu momento, integrando a visão terapêutica e a orientação espiritual em uma experiência completa, esclarecedora e transformadora.</p>
       </div>
 
+      <!-- FOTO DA ÉRIKA (ABAIXO DO TEXTO) -->
       <div class="sobre-imagem">
         <img src="erika.jpeg" alt="Érika — Terapeuta e Cartomante" onerror="this.style.display='none'">
       </div>
     </div>
   </section>
 
+  <!-- ===== DEPOIMENTOS ===== -->
   <section class="depoimentos">
     <div class="container">
       <div class="depoimentos-header">
@@ -753,32 +741,34 @@
 
       <div class="depoimentos-grid">
         <div class="depoimento-item">
-          <img src="imagem 4.jpeg" alt="Depoimento 1" class="depoimento-img" onerror="this.style.display='none'">
+          <img src="imagem.4.jpeg" alt="Depoimento 1" class="depoimento-img" onerror="this.style.display='none'">
         </div>
         <div class="depoimento-item">
-          <img src="imagem 5.jpeg" alt="Depoimento 2" class="depoimento-img" onerror="this.style.display='none'">
+          <img src="imagem.5.jpeg" alt="Depoimento 2" class="depoimento-img" onerror="this.style.display='none'">
         </div>
         <div class="depoimento-item">
-          <img src="imagem 6.jpeg" alt="Depoimento 3" class="depoimento-img" onerror="this.style.display='none'">
+          <img src="imagem.6.jpeg" alt="Depoimento 3" class="depoimento-img" onerror="this.style.display='none'">
         </div>
         <div class="depoimento-item">
-          <img src="imagem 7.jpeg" alt="Depoimento 4" class="depoimento-img" onerror="this.style.display='none'">
+          <img src="imagem.7.jpeg" alt="Depoimento 4" class="depoimento-img" onerror="this.style.display='none'">
         </div>
         <div class="depoimento-item">
-          <img src="imagem 8.jpeg" alt="Depoimento 5" class="depoimento-img" onerror="this.style.display='none'">
+          <img src="imagem.8.jpeg" alt="Depoimento 5" class="depoimento-img" onerror="this.style.display='none'">
         </div>
         <div class="depoimento-item">
-          <img src="imagem 9.jpeg" alt="Depoimento 6" class="depoimento-img" onerror="this.style.display='none'">
+          <img src="imagem.9.jpeg" alt="Depoimento 6" class="depoimento-img" onerror="this.style.display='none'">
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ===== FOOTER ===== -->
   <footer>
     <div class="container">
-      <div class="footer-icon">
-        <i class="ri-plant-line"></i>
-      </div>
+      <svg class="footer-lotus" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M32 10C32 10 37.5 20.5 37.5 30C37.5 35.8 35 41 32 43C29 41 26.5 35.8 26.5 30C26.5 20.5 32 10 32 10Z" fill="#c19a5b"/>
+        <path d="M32 19C35.5 24.5 43 29 48 32.8C50.8 35 51.2 38.5 48.5 40.8C45 43.8 38.2 43.5 32 43.5C25.8 43.5 19 43.8 15.5 40.8C12.8 38.5 13.2 35 16 32.8C21 29 28.5 24.5 32 19Z" fill="#d8b475"/>
+      </svg>
       <p class="assinatura">Com carinho, Érika</p>
       <p>Vida Arquetípica · Clareza · Direção · Acolhimento</p>
     </div>
