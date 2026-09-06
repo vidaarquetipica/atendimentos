@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meus Atendimentos | Érika</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Karla:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4/fonts/remixicon.css">
+<style>
+  :root {
+    --bg: #faf8f3;
+    --bg-soft: #f3efe6;
+    --card: #ffffff;
+    --text: #3a3f35;
+    --text-soft: #6b7260;
+    --muted: #8a9180;
+    --moss: #5a6b4a;
+    --moss-soft: rgba(90, 107, 74, 0.08);
+    --moss-medium: #7a8b6a;
+    --gold: #b8975a;
+    --gold-soft: rgba(184, 151, 90, 0.1);
+    --gold-light: #d4b97a;
+    --purple: #8b7a9e;
+    --purple-soft: rgba(139, 122, 158, 0.08);
+    --purple-light: #a899bb;
+    --border: rgba(90, 107, 74, 0.12);
+    --border-gold: rgba(184, 151, 90, 0.2);
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Karla', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--moss);
+  }
+
+  .container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    padding: 80px 0 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--gold-soft) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-icon {
+    font-size: 36px;
+    color: var(--gold);
+    margin-bottom: 20px;
+    display: inline-block;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    color: var(--moss);
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+    color: var(--gold);
+    font-style: italic;
+    margin-bottom: 28px;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero p {
+    max-width: 680px;
+    margin: 0 auto;
+    color: var(--text-soft);
+    font-size: 1.05rem;
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 48px 0;
+  }
+
+  .divider-line {
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+  }
+
+  .divider i {
+    color: var(--gold);
+    font-size: 14px;
+  }
+
+  /* ===== SECTION INTRO ===== */
+  .section-intro {
+    text-align: center;
+    max-width: 620px;
+    margin: 0 auto 56px;
+  }
+
+  .section-intro h2 {
+    font-size: clamp(1.6rem, 3.5vw, 2.1rem);
+    margin-bottom: 14px;
+  }
+
+  .section-intro p {
+    color: var(--text-soft);
+  }
+
+  /* ===== ATENDIMENTOS GRID ===== */
+  .atendimentos {
+    padding: 20px 0 80px;
+  }
+
+  .atendimentos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 28px;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--moss), var(--gold), var(--purple));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(90, 107, 74, 0.1);
+    border-color: var(--border-gold);
+  }
+
+  .card:hover::before {
+    opacity: 1;
+  }
+
+  .card-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    background: var(--bg-soft);
+  }
+
+  .card-body {
+    padding: 28px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .card-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .card-icon.moss {
+    background: var(--moss-soft);
+    color: var(--moss);
+  }
+
+  .card-icon.gold {
+    background: var(--gold-soft);
+    color: var(--gold);
+  }
+
+  .card-icon.purple {
+    background: var(--purple-soft);
+    color: var(--purple);
+  }
+
+  .card h3 {
+    font-size: 1.5rem;
+    color: var(--moss);
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .tag {
+    font-size: 0.78rem;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: var(--bg-soft);
+    color: var(--moss-medium);
+    letter-spacing: 0.3px;
+    font-weight: 500;
+  }
+
+  .card p {
+    color: var(--text-soft);
+    font-size: 0.98rem;
+    margin-bottom: 20px;
+    flex: 1;
+  }
+
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+
+  .price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-family: 'Karla', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--moss-soft);
+    color: var(--moss);
+    border: 1px solid transparent;
+  }
+
+  .btn-primary:hover {
+    background: var(--moss);
+    color: #fff;
+  }
+
+  .btn-primary i {
+    font-size: 14px;
+    transition: transform 0.3s ease;
+  }
+
+  .btn-primary:hover i {
+    transform: translateX(3px);
+  }
+
+  /* ===== SOBRE ÉRIKA ===== */
+  .sobre-erika {
+    padding: 80px 0;
+    background: linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
+    position: relative;
+  }
+
+  .sobre-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .sobre-imagem {
+    position: sticky;
+    top: 40px;
+  }
+
+  .sobre-imagem img {
+    width: 100%;
+    border-radius: 16px;
+    display: block;
+    box-shadow: 0 20px 50px rgba(90, 107, 74, 0.15);
+  }
+
+  .sobre-imagem::after {
+    content: '';
+    position: absolute;
+    bottom: -16px;
+    right: -16px;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--gold-light);
+    border-radius: 16px;
+    z-index: -1;
+    opacity: 0.5;
+  }
+
+  .sobre-conteudo h2 {
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    margin-bottom: 24px;
+  }
+
+  .sobre-conteudo > p {
+    color: var(--text-soft);
+    margin-bottom: 18px;
+    font-size: 1.02rem;
+  }
+
+  .pilares {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 36px 0;
+    padding: 28px;
+    background: var(--card);
+    border-radius: 12px;
+    border: 1px solid var(--border-gold);
+  }
+
+  .pilar {
+    text-align: center;
+  }
+
+  .pilar i {
+    font-size: 22px;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .pilar h4 {
+    font-size: 1.15rem;
+    color: var(--moss);
+    margin-bottom: 4px;
+  }
+
+  .destaque {
+    background: var(--moss-soft);
+    border-left: 3px solid var(--gold);
+    padding: 20px 24px;
+    border-radius: 0 10px 10px 0;
+    margin: 24px 0;
+    font-style: italic;
+    color: var(--moss);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+  }
+
+  /* ===== DEPOIMENTOS ===== */
+  .depoimentos {
+    padding: 80px 0;
+  }
+
+  .depoimentos-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .depoimentos-header h2 {
+    font-size: clamp(1.6rem, 3.5vw, 2.1rem);
+    margin-bottom: 12px;
+  }
+
+  .depoimentos-header p {
+    color: var(--text-soft);
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .depoimentos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .depoimento-img {
+    width: 100%;
+    border-radius: 12px;
+    display: block;
+    transition: transform 0.4s ease;
+    box-shadow: 0 4px 16px rgba(90, 107, 74, 0.08);
+  }
+
+  .depoimento-item {
+    overflow: hidden;
+    border-radius: 12px;
+  }
+
+  .depoimento-item:hover .depoimento-img {
+    transform: scale(1.02);
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    padding: 48px 0 32px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    background: var(--bg-soft);
+  }
+
+  .footer-icon {
+    color: var(--gold);
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+
+  footer p {
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  footer .assinatura {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: var(--moss);
+    margin-bottom: 8px;
+  }
+
+  /* ===== RESPONSIVO ===== */
+  @media (max-width: 768px) {
+    .hero {
+      padding: 56px 0 40px;
+    }
+
+    .sobre-wrapper {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .sobre-imagem {
+      position: static;
+      max-width: 360px;
+      margin: 0 auto;
+    }
+
+    .pilares {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .atendimentos-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .card-footer {
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-start;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-icon">
+        <i class="ri-plant-line"></i>
+      </div>
+      <h1>Meus Atendimentos</h1>
+      <p class="hero-subtitle">Um olhar profundo para você, sua história e os caminhos que deseja transformar.</p>
+      <p>Cada atendimento é personalizado para compreender melhor o seu momento, revelar padrões, potenciais e pontos que merecem atenção — unindo Mapa Astral, Arquétipos e conhecimento terapêutico para trazer mais clareza, direção e autoconhecimento.</p>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="divider">
+      <div class="divider-line"></div>
+      <i class="ri-seedling-line"></i>
+      <div class="divider-line"></div>
+    </div>
+  </div>
+
+  <!-- ===== ATENDIMENTOS ===== -->
+  <section class="atendimentos">
+    <div class="container">
+      <div class="section-intro">
+        <h2>Escolha o seu caminho</h2>
+        <p>Escolha o atendimento que mais combina com o que você deseja compreender neste momento:</p>
+      </div>
+
+      <div class="atendimentos-grid">
+
+        <!-- Mapa da Essência -->
+        <article class="card">
+          <img src="mapadaessencia.png" alt="Mapa da Essência" class="card-image" onerror="this.style.display='none'">
+          <div class="card-body">
+            <div class="card-header">
+              <div class="card-icon moss">
+                <i class="ri-plant-line"></i>
+              </div>
+              <h3>Mapa da Essência</h3>
+            </div>
+            <div class="card-tags">
+              <span class="tag">Autoconhecimento</span>
+              <span class="tag">Padrões</span>
+              <span class="tag">Bloqueios</span>
+              <span class="tag">Identidade</span>
+            </div>
+            <p>Um mergulho em quem você é, nos seus padrões e naquilo que pode estar impedindo você de viver de forma mais alinhada consigo mesma.</p>
+            <div class="card-footer">
+              <span class="price">R$ 249,90</span>
+              <a href="https://vidaarquetipica.github.io/mapadaessencia/" class="btn btn-primary" target="_blank" rel="noopener">
+                Conhecer
+                <i class="ri-arrow-right-line"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Mapa da Carreira -->
+        <article class="card">
+          <img src="mapadacarreira.png" alt="Mapa da Carreira" class="card-image" onerror="this.style.display='none'">
+          <div class="card-body">
+            <div class="card-header">
+              <div class="card-icon gold">
+                <i class="ri-sun-line"></i>
+              </div>
+              <h3>Mapa da Carreira</h3>
+            </div>
+            <div class="card-tags">
+              <span class="tag">Propósito</span>
+              <span class="tag">Trabalho</span>
+              <span class="tag">Potenciais</span>
+              <span class="tag">Prosperidade</span>
+            </div>
+            <p>Para compreender seus potenciais profissionais, descobrir caminhos que combinam com você e encontrar uma direção mais alinhada para sua vida profissional.</p>
+            <div class="card-footer">
+              <span class="price">R$ 249,90</span>
+              <a href="https://vidaarquetipica.github.io/mapadacarreira/" class="btn btn-primary" target="_blank" rel="noopener">
+                Conhecer
+                <i class="ri-arrow-right-line"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Mapa do Amor -->
+        <article class="card">
+          <img src="mapadoamor.png" alt="Mapa do Amor" class="card-image" onerror="this.style.display='none'">
+          <div class="card-body">
+            <div class="card-header">
+              <div class="card-icon purple">
+                <i class="ri-heart-3-line"></i>
+              </div>
+              <h3>Mapa do Amor</h3>
+            </div>
+            <div class="card-tags">
+              <span class="tag">Relacionamentos</span>
+              <span class="tag">Afeto</span>
+              <span class="tag">Padrões</span>
+              <span class="tag">Autoconhecimento</span>
+            </div>
+            <p>Uma leitura voltada para sua forma de amar, seus padrões afetivos e os pontos que podem estar influenciando seus relacionamentos.</p>
+            <div class="card-footer">
+              <span class="price">R$ 249,90</span>
+              <a href="https://vidaarquetipica.github.io/mapadoamor/" class="btn btn-primary" target="_blank" rel="noopener">
+                Conhecer
+                <i class="ri-arrow-right-line"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Combo Arquetípico -->
+        <article class="card">
+          <img src="combo.png" alt="Combo Arquetípico Personalizado" class="card-image" onerror="this.style.display='none'">
+          <div class="card-body">
+            <div class="card-header">
+              <div class="card-icon gold">
+                <i class="ri-shining-line"></i>
+              </div>
+              <h3>Combo Arquetípico</h3>
+            </div>
+            <div class="card-tags">
+              <span class="tag">Personalizado</span>
+              <span class="tag">Arquétipos</span>
+              <span class="tag">Acessível</span>
+            </div>
+            <p>Seu combo de arquétipos criado especialmente para você. Uma opção mais acessível para quem deseja começar a trabalhar o próprio campo arquetípico de maneira personalizada.</p>
+            <div class="card-footer">
+              <span class="price">R$ 78,90</span>
+              <a href="https://vidaarquetipica.github.io/combopersonalizado/" class="btn btn-primary" target="_blank" rel="noopener">
+                Conhecer
+                <i class="ri-arrow-right-line"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Tarô -->
+        <article class="card">
+          <img src="taro.png" alt="Tarô" class="card-image" onerror="this.style.display='none'">
+          <div class="card-body">
+            <div class="card-header">
+              <div class="card-icon purple">
+                <i class="ri-sparkling-line"></i>
+              </div>
+              <h3>Tarô</h3>
+            </div>
+            <div class="card-tags">
+              <span class="tag">Clareza</span>
+              <span class="tag">Orientação</span>
+              <span class="tag">Momento presente</span>
+            </div>
+            <p>Uma leitura para compreender melhor o seu momento e encontrar clareza diante das suas questões. Conheça todas as opções de atendimento e escolha aquela que melhor atende ao que você procura.</p>
+            <div class="card-footer">
+              <span class="price" style="font-size: 1rem; color: var(--text-soft); font-family: 'Karla', sans-serif;">Ver opções</span>
+              <a href="https://vidaarquetipica.github.io/tarociganadaestrada/" class="btn btn-primary" target="_blank" rel="noopener">
+                Conhecer
+                <i class="ri-arrow-right-line"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SOBRE ÉRIKA ===== -->
+  <section class="sobre-erika">
+    <div class="container">
+      <div class="sobre-wrapper">
+        <div class="sobre-imagem">
+          <img src="erika.png" alt="Érika — Terapeuta e Cartomante" onerror="this.style.display='none'">
+        </div>
+        <div class="sobre-conteudo">
+          <h2>Quem é Érika?</h2>
+          <p>Érika é Terapeuta e Cartomante e possui uma trajetória profundamente conectada à espiritualidade.</p>
+          <p>Em seus atendimentos, une conhecimentos terapêuticos e espirituais para oferecer uma abordagem acolhedora, profunda e, ao mesmo tempo, simples e objetiva.</p>
+          <p>Ao longo de sua jornada, já realizou mais de 1K de atendimentos, ajudando pessoas a compreenderem melhor a si mesmas, seus momentos de vida, seus padrões e os caminhos que desejam transformar.</p>
+
+          <p style="margin-top: 28px; font-weight: 500; color: var(--moss);">Seu trabalho é guiado por três pilares:</p>
+
+          <div class="pilares">
+            <div class="pilar">
+              <i class="ri-focus-line"></i>
+              <h4>Clareza</h4>
+            </div>
+            <div class="pilar">
+              <i class="ri-compass-3-line"></i>
+              <h4>Direção</h4>
+            </div>
+            <div class="pilar">
+              <i class="ri-open-arm-line"></i>
+              <h4>Acolhimento</h4>
+            </div>
+          </div>
+
+          <div class="destaque">
+            "Érika acredita que um bom atendimento não deve deixar você ainda mais confusa. Pelo contrário: ele deve ajudar você a enxergar aquilo que antes não conseguia perceber."
+          </div>
+
+          <p>Por isso, cada leitura é realizada de forma personalizada, buscando entregar respostas, novos entendimentos e direcionamentos que possam realmente fazer sentido para o seu momento.</p>
+          <p>A união entre o terapêutico e o espiritual torna cada atendimento uma experiência mais completa, profunda e acolhedora.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DEPOIMENTOS ===== -->
+  <section class="depoimentos">
+    <div class="container">
+      <div class="depoimentos-header">
+        <h2>O que dizem algumas pessoas</h2>
+        <p>Veja alguns depoimentos de consulentes que já viveram essa experiência:</p>
+      </div>
+
+      <div class="depoimentos-grid">
+        <div class="depoimento-item">
+          <img src="imagem.4.png" alt="Depoimento" class="depoimento-img" onerror="this.style.display='none'">
+        </div>
+        <div class="depoimento-item">
+          <img src="imagem.5.png" alt="Depoimento" class="depoimento-img" onerror="this.style.display='none'">
+        </div>
+        <div class="depoimento-item">
+          <img src="imagem.6.png" alt="Depoimento" class="depoimento-img" onerror="this.style.display='none'">
+        </div>
+        <div class="depoimento-item">
+          <img src="imagem.7.png" alt="Depoimento" class="depoimento-img" onerror="this.style.display='none'">
+        </div>
+        <div class="depoimento-item">
+          <img src="imagem.8.png" alt="Depoimento" class="depoimento-img" onerror="this.style.display='none'">
+        </div>
+        <div class="depoimento-item">
+          <img src="imagem.9.png" alt="Depoimento" class="depoimento-img" onerror="this.style.display='none'">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container">
+      <div class="footer-icon">
+        <i class="ri-plant-line"></i>
+      </div>
+      <p class="assinatura">Com carinho, Érika</p>
+      <p>Clareza · Direção · Acolhimento</p>
+    </div>
+  </footer>
+
+</body>
+</html>
