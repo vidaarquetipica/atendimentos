@@ -61,50 +61,34 @@
     padding: 0 20px;
   }
 
-  /* ===== HERO REDUZIDO & LÓTUS ===== */
+  /* ===== HERO COM IMAGEM DA MARCA ===== */
   .hero {
-    padding: 40px 0 28px;
+    padding: 36px 0 28px;
     text-align: center;
     position: relative;
     background: linear-gradient(180deg, #f4eee5 0%, var(--bg) 100%);
     border-bottom: 1px solid var(--border);
   }
 
-  .brand-header {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 12px;
+  .hero-logo-wrapper {
+    max-width: 580px;
+    margin: 0 auto 18px;
+    padding: 0 10px;
   }
 
-  .lotus-symbol {
-    width: 58px;
-    height: 58px;
-    margin-bottom: 10px;
-    filter: drop-shadow(0 2px 6px rgba(193, 154, 91, 0.25));
-  }
-
-  .hero h1 {
-    font-size: clamp(2.3rem, 4.8vw, 3.4rem);
-    color: var(--moss-dark);
-    letter-spacing: 0.5px;
-    font-weight: 700;
-  }
-
-  .hero-subtitle {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.15rem, 2vw, 1.4rem);
-    color: var(--gold-dark);
-    font-style: italic;
-    font-weight: 600;
-    margin-bottom: 10px;
+  .hero-logo-img {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(37, 24, 49, 0.18);
+    display: block;
   }
 
   .hero p.hero-desc {
     max-width: 620px;
     margin: 0 auto;
     color: var(--text-soft);
-    font-size: 1.02rem;
+    font-size: 1.05rem;
     font-weight: 500;
   }
 
@@ -176,7 +160,7 @@
     border-color: var(--border-gold);
   }
 
-  /* FORMATAÇÃO DE IMAGEM QUADRADA (INSTAGRAM 1:1) SEM CORTAR TEXTOS */
+  /* FORMATAÇÃO DE IMAGEM QUADRADA INSTAGRAM */
   .card-image-wrapper {
     width: 100%;
     aspect-ratio: 1 / 1;
@@ -323,16 +307,44 @@
     text-align: center;
   }
 
-  .sobre-conteudo {
-    margin-bottom: 40px;
-    text-align: left;
-  }
-
-  .sobre-conteudo h2 {
+  .sobre-erika h2 {
     font-size: clamp(2.1rem, 4vw, 2.7rem);
-    margin-bottom: 20px;
+    margin-bottom: 24px;
     text-align: center;
     color: var(--moss-dark);
+  }
+
+  .sobre-imagem {
+    max-width: 440px;
+    margin: 0 auto 36px;
+    position: relative;
+  }
+
+  .sobre-imagem img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 18px;
+    display: block;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border);
+  }
+
+  .sobre-imagem::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--gold);
+    border-radius: 18px;
+    z-index: -1;
+    opacity: 0.5;
+  }
+
+  .sobre-conteudo {
+    text-align: left;
   }
 
   .sobre-conteudo p {
@@ -394,35 +406,6 @@
     line-height: 1.5;
   }
 
-  .sobre-imagem {
-    max-width: 460px;
-    margin: 0 auto;
-    position: relative;
-  }
-
-  .sobre-imagem img {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    border-radius: 18px;
-    display: block;
-    box-shadow: var(--shadow-md);
-    border: 1px solid var(--border);
-  }
-
-  .sobre-imagem::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    right: -10px;
-    width: 100%;
-    height: 100%;
-    border: 2px solid var(--gold);
-    border-radius: 18px;
-    z-index: -1;
-    opacity: 0.5;
-  }
-
   /* ===== DEPOIMENTOS ===== */
   .depoimentos {
     padding: 72px 0;
@@ -474,13 +457,6 @@
     background: var(--bg-soft);
   }
 
-  .footer-lotus {
-    width: 36px;
-    height: 36px;
-    margin-bottom: 10px;
-    opacity: 0.9;
-  }
-
   footer p {
     color: var(--text-soft);
     font-size: 0.92rem;
@@ -493,6 +469,32 @@
     color: var(--moss-dark);
     font-weight: 600;
     margin-bottom: 4px;
+  }
+
+  /* ===== ÍCONE FLUTUANTE DO WHATSAPP ===== */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 60px;
+    height: 60px;
+    background-color: #25d366;
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+    z-index: 999;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .whatsapp-float:hover {
+    transform: scale(1.1) translateY(-2px);
+    background-color: #20ba5a;
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.5);
   }
 
   /* ===== RESPONSIVIDADE ===== */
@@ -513,24 +515,24 @@
       grid-template-columns: 1fr;
       gap: 16px;
     }
+
+    .whatsapp-float {
+      bottom: 20px;
+      right: 20px;
+      width: 54px;
+      height: 54px;
+      font-size: 28px;
+    }
   }
 </style>
 </head>
 <body>
 
-  <!-- ===== HERO COM FLOR DE LÓTUS 🪷 ===== -->
+  <!-- ===== HERO COM IMAGEM DO TOPO ===== -->
   <section class="hero">
     <div class="container">
-      <div class="brand-header">
-        <!-- Ícone da Flor de Lótus 🪷 -->
-        <svg class="lotus-symbol" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M32 10C32 10 37.5 20.5 37.5 30C37.5 35.8 35 41 32 43C29 41 26.5 35.8 26.5 30C26.5 20.5 32 10 32 10Z" fill="#c19a5b"/>
-          <path d="M32 19C35.5 24.5 43 29 48 32.8C50.8 35 51.2 38.5 48.5 40.8C45 43.8 38.2 43.5 32 43.5C25.8 43.5 19 43.8 15.5 40.8C12.8 38.5 13.2 35 16 32.8C21 29 28.5 24.5 32 19Z" fill="#d8b475"/>
-          <path d="M32 25.5C37.8 29.5 47.8 34.5 53.8 35.8C57.2 36.8 57.8 40.2 54.8 42.5C49.5 46 40 44.5 32 44.5C24 44.5 14.5 46 9.2 42.5C6.2 40.2 6.8 36.8 10.2 35.8C16.2 34.5 26.2 29.5 32 25.5Z" fill="#a88144"/>
-          <path d="M18.5 45C23 47.2 27.2 48 32 48C36.8 48 41 47.2 45.5 45C48.8 43.5 51 46.2 48.8 48.5C44.8 52.5 38.8 53.5 32 53.5C25.2 53.5 19.2 52.5 15.2 48.5C13 46.2 15.2 43.5 18.5 45Z" fill="#384630"/>
-        </svg>
-        <h1>Vida Arquetípica</h1>
-        <p class="hero-subtitle">Meus Atendimentos &amp; Orientação Pessoal</p>
+      <div class="hero-logo-wrapper">
+        <img src="logo.jpeg" alt="Vida Arquetípica — Érika" class="hero-logo-img" onerror="this.style.display='none'">
       </div>
       <p class="hero-desc">Um olhar profundo para a sua jornada. Escolha o atendimento ideal para trazer clareza, direção e alinhamento com sua essência.</p>
     </div>
@@ -694,8 +696,16 @@
   <!-- ===== SOBRE ÉRIKA ===== -->
   <section class="sobre-erika">
     <div class="container sobre-container">
+      <!-- 1. FRASE/TÍTULO DA SEÇÃO -->
+      <h2>Quem é Érika?</h2>
+
+      <!-- 2. FOTO DA ÉRIKA POSICIONADA LOGO ABAIXO DA FRASE -->
+      <div class="sobre-imagem">
+        <img src="erika.jpeg" alt="Érika — Terapeuta e Cartomante" onerror="this.style.display='none'">
+      </div>
+
+      <!-- 3. TEXTO DESCRITIVO E PILARES ABAIXO DA DA FOTO -->
       <div class="sobre-conteudo">
-        <h2>Quem é Érika?</h2>
         <p>Érika é Terapeuta e Cartomante, com uma trajetória profundamente conectada à espiritualidade e ao autoconhecimento.</p>
         <p>Em seus atendimentos, une conhecimentos terapêuticos e espirituais para oferecer uma abordagem acolhedora, profunda e, ao mesmo tempo, simples e objetiva.</p>
         <p>Ao longo de sua jornada, já realizou mais de 1.000 atendimentos, ajudando pessoas a compreenderem a si mesmas, identificarem padrões ocultos e transformarem seus caminhos com confiança.</p>
@@ -723,11 +733,6 @@
 
         <p>Por isso, cada leitura é feita sob medida para o seu momento, integrando a visão terapêutica e a orientação espiritual em uma experiência completa, esclarecedora e transformadora.</p>
       </div>
-
-      <!-- FOTO DA ÉRIKA (ABAIXO DO TEXTO) -->
-      <div class="sobre-imagem">
-        <img src="erika.jpeg" alt="Érika — Terapeuta e Cartomante" onerror="this.style.display='none'">
-      </div>
     </div>
   </section>
 
@@ -741,22 +746,22 @@
 
       <div class="depoimentos-grid">
         <div class="depoimento-item">
-          <img src="imagem.4.jpeg" alt="Depoimento 1" class="depoimento-img" onerror="this.style.display='none'">
+          <img src="imagem 4.jpeg" alt="Depoimento 1" class="depoimento-img" onerror="this.style.display='none'">
         </div>
         <div class="depoimento-item">
-          <img src="imagem.5.jpeg" alt="Depoimento 2" class="depoimento-img" onerror="this.style.display='none'">
+          <img src="imagem 5.jpeg" alt="Depoimento 2" class="depoimento-img" onerror="this.style.display='none'">
         </div>
         <div class="depoimento-item">
-          <img src="imagem.6.jpeg" alt="Depoimento 3" class="depoimento-img" onerror="this.style.display='none'">
+          <img src="imagem 6.jpeg" alt="Depoimento 3" class="depoimento-img" onerror="this.style.display='none'">
         </div>
         <div class="depoimento-item">
-          <img src="imagem.7.jpeg" alt="Depoimento 4" class="depoimento-img" onerror="this.style.display='none'">
+          <img src="imagem 7.jpeg" alt="Depoimento 4" class="depoimento-img" onerror="this.style.display='none'">
         </div>
         <div class="depoimento-item">
-          <img src="imagem.8.jpeg" alt="Depoimento 5" class="depoimento-img" onerror="this.style.display='none'">
+          <img src="imagem 8.jpeg" alt="Depoimento 5" class="depoimento-img" onerror="this.style.display='none'">
         </div>
         <div class="depoimento-item">
-          <img src="imagem.9.jpeg" alt="Depoimento 6" class="depoimento-img" onerror="this.style.display='none'">
+          <img src="imagem 9.jpeg" alt="Depoimento 6" class="depoimento-img" onerror="this.style.display='none'">
         </div>
       </div>
     </div>
@@ -765,14 +770,15 @@
   <!-- ===== FOOTER ===== -->
   <footer>
     <div class="container">
-      <svg class="footer-lotus" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M32 10C32 10 37.5 20.5 37.5 30C37.5 35.8 35 41 32 43C29 41 26.5 35.8 26.5 30C26.5 20.5 32 10 32 10Z" fill="#c19a5b"/>
-        <path d="M32 19C35.5 24.5 43 29 48 32.8C50.8 35 51.2 38.5 48.5 40.8C45 43.8 38.2 43.5 32 43.5C25.8 43.5 19 43.8 15.5 40.8C12.8 38.5 13.2 35 16 32.8C21 29 28.5 24.5 32 19Z" fill="#d8b475"/>
-      </svg>
       <p class="assinatura">Com carinho, Érika</p>
       <p>Vida Arquetípica · Clareza · Direção · Acolhimento</p>
     </div>
   </footer>
+
+  <!-- ===== ÍCONE FLUTUANTE DO WHATSAPP ===== -->
+  <a href="https://wa.me/message/HYCA7N7T73X4N1" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+    <i class="ri-whatsapp-line"></i>
+  </a>
 
 </body>
 </html>
