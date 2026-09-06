@@ -61,34 +61,43 @@
     padding: 0 20px;
   }
 
-  /* ===== HERO COM IMAGEM DA MARCA ===== */
+  /* ===== HERO REFEITO (SEM IMAGEM, APENAS FLOR DE LÓTUS E NOME) ===== */
   .hero {
-    padding: 36px 0 28px;
+    padding: 44px 0 32px;
     text-align: center;
     position: relative;
     background: linear-gradient(180deg, #f4eee5 0%, var(--bg) 100%);
     border-bottom: 1px solid var(--border);
   }
 
-  .hero-logo-wrapper {
-    max-width: 580px;
-    margin: 0 auto 18px;
-    padding: 0 10px;
+  .brand-header {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 8px;
   }
 
-  .hero-logo-img {
-    width: 100%;
-    height: auto;
-    border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(37, 24, 49, 0.18);
-    display: block;
+  .lotus-symbol {
+    font-size: 2.5rem;
+    margin-bottom: 6px;
+    display: inline-block;
+    filter: drop-shadow(0 2px 4px rgba(193, 154, 91, 0.2));
   }
 
   .hero-title {
-    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    font-size: clamp(2.2rem, 4.8vw, 3.2rem);
     color: var(--moss-dark);
-    margin-bottom: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.2rem, 2.2vw, 1.45rem);
+    color: var(--gold-dark);
+    font-style: italic;
     font-weight: 600;
+    margin-bottom: 12px;
   }
 
   .hero p.hero-desc {
@@ -167,13 +176,16 @@
     border-color: var(--border-gold);
   }
 
-  /* FORMATAÇÃO DE IMAGEM QUADRADA INSTAGRAM */
+  /* FORMATAÇÃO DE IMAGEM QUADRADA CLICÁVEL (INSTAGRAM 1:1) */
   .card-image-wrapper {
+    display: block;
     width: 100%;
     aspect-ratio: 1 / 1;
     overflow: hidden;
     background: var(--bg-soft);
     border-bottom: 1px solid var(--border);
+    text-decoration: none;
+    cursor: pointer;
   }
 
   .card-image {
@@ -185,7 +197,7 @@
   }
 
   .card:hover .card-image {
-    transform: scale(1.02);
+    transform: scale(1.03);
   }
 
   .card-body {
@@ -535,13 +547,14 @@
 </head>
 <body>
 
-  <!-- ===== HERO COM IMAGEM DO TOPO ===== -->
+  <!-- ===== HERO APENAS COM TEXTO E FLOR DE LÓTUS 🪷 ===== -->
   <section class="hero">
     <div class="container">
-      <div class="hero-logo-wrapper">
-        <img src="imagem central.png" alt="Vida Arquetípica — Érika" class="hero-logo-img" onerror="this.style.display='none'">
+      <div class="brand-header">
+        <span class="lotus-symbol">🪷</span>
+        <h1 class="hero-title">Vida Arquetípica</h1>
       </div>
-      <h1 class="hero-title">Atendimentos & Orientações</h1>
+      <p class="hero-subtitle">Atendimentos &amp; Orientações</p>
       <p class="hero-desc">Um olhar profundo para a sua jornada. Escolha o atendimento ideal para trazer clareza, direção e alinhamento com sua essência.</p>
     </div>
   </section>
@@ -559,9 +572,10 @@
 
         <!-- Mapa da Essência -->
         <article class="card">
-          <div class="card-image-wrapper">
+          <!-- IMAGEM CLICÁVEL -->
+          <a href="https://vidaarquetipica.github.io/mapadaessencia/" target="_blank" rel="noopener" class="card-image-wrapper">
             <img src="mapadaessencia.jpeg" alt="Mapa da Essência" class="card-image" onerror="this.style.display='none'">
-          </div>
+          </a>
           <div class="card-body">
             <div class="card-header">
               <div class="card-icon moss">
@@ -586,9 +600,10 @@
 
         <!-- Mapa da Carreira -->
         <article class="card">
-          <div class="card-image-wrapper">
+          <!-- IMAGEM CLICÁVEL -->
+          <a href="https://vidaarquetipica.github.io/mapadacarreira/" target="_blank" rel="noopener" class="card-image-wrapper">
             <img src="mapadacarreira.jpeg" alt="Mapa da Carreira" class="card-image" onerror="this.style.display='none'">
-          </div>
+          </a>
           <div class="card-body">
             <div class="card-header">
               <div class="card-icon gold">
@@ -613,9 +628,10 @@
 
         <!-- Mapa do Amor -->
         <article class="card">
-          <div class="card-image-wrapper">
+          <!-- IMAGEM CLICÁVEL -->
+          <a href="https://vidaarquetipica.github.io/mapadoamor/" target="_blank" rel="noopener" class="card-image-wrapper">
             <img src="mapadoamor.jpeg" alt="Mapa do Amor" class="card-image" onerror="this.style.display='none'">
-          </div>
+          </a>
           <div class="card-body">
             <div class="card-header">
               <div class="card-icon purple">
@@ -645,9 +661,10 @@
 
         <!-- Combo Arquetípico -->
         <article class="card">
-          <div class="card-image-wrapper">
+          <!-- IMAGEM CLICÁVEL -->
+          <a href="https://vidaarquetipica.github.io/combopersonalizado/" target="_blank" rel="noopener" class="card-image-wrapper">
             <img src="combo.jpeg" alt="Combo Arquetípico Personalizado" class="card-image" onerror="this.style.display='none'">
-          </div>
+          </a>
           <div class="card-body">
             <div class="card-header">
               <div class="card-icon gold">
@@ -672,9 +689,10 @@
 
         <!-- Tarô -->
         <article class="card">
-          <div class="card-image-wrapper">
+          <!-- IMAGEM CLICÁVEL -->
+          <a href="https://vidaarquetipica.github.io/tarociganadaestrada/" target="_blank" rel="noopener" class="card-image-wrapper">
             <img src="taro.jpeg" alt="Tarô" class="card-image" onerror="this.style.display='none'">
-          </div>
+          </a>
           <div class="card-body">
             <div class="card-header">
               <div class="card-icon purple">
@@ -736,7 +754,7 @@
         </div>
 
         <div class="destaque">
-          "Érika acredita que um bom atendimento não deve deixar você confusa. Pelo contrário: ele deve trazer a luz necessária para você enregar aquilo que antes não conseguia perceber."
+          "Érika acredita que um bom atendimento não deve deixar você confusa. Pelo contrário: ele deve trazer a luz necessária para você enxergar aquilo que antes não conseguia perceber."
         </div>
 
         <p>Por isso, cada leitura é feita sob medida para o seu momento, integrando a visão terapêutica e a orientação espiritual em uma experiência completa, esclarecedora e transformadora.</p>
