@@ -3,730 +3,1099 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Meus Atendimentos | Vida Arquetípica — Érika</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4/fonts/remixicon.css">
+
+<title>Atendimentos | Érika Silva</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+
 <style>
-  :root {
-    --bg: #faf7f2;
-    --bg-soft: #f2ebe1;
-    --card: #ffffff;
-    --text: #2c3328;
-    --text-soft: #4a5445;
-    --muted: #737d6e;
-    --moss: #384630;
-    --moss-dark: #25311f;
-    --moss-soft: rgba(56, 70, 48, 0.07);
-    --gold: #c19a5b;
-    --gold-dark: #9e7a3e;
-    --gold-soft: rgba(193, 154, 91, 0.12);
-    --rose: #c98b8b;
-    --rose-soft: rgba(201, 139, 139, 0.12);
-    --border: rgba(56, 70, 48, 0.12);
-    --border-gold: rgba(193, 154, 91, 0.3);
-    --shadow-sm: 0 4px 20px rgba(44, 51, 40, 0.04);
-    --shadow-md: 0 12px 32px rgba(44, 51, 40, 0.08);
-  }
-
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
-
-  body {
-    font-family: 'Nunito', sans-serif;
-    background-color: var(--bg);
-    color: var(--text);
-    line-height: 1.65;
-    font-size: 16px;
-    font-weight: 400;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  h1, h2, h3, h4 {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 600;
-    line-height: 1.25;
-    color: var(--moss-dark);
-  }
-
-  .container {
-    max-width: 880px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-
-  /* ===== HERO / CABEÇALHO ===== */
-  .hero {
-    padding: 48px 0 24px;
-    text-align: center;
-    background: linear-gradient(180deg, #f4eee5 0%, var(--bg) 100%);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .hero-tag {
-    display: inline-block;
-    font-size: 0.82rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--gold-dark);
-    margin-bottom: 8px;
-  }
-
-  .hero h1 {
-    font-size: clamp(2.2rem, 4.8vw, 3.2rem);
-    color: var(--moss-dark);
-    font-weight: 700;
-    margin-bottom: 12px;
-    letter-spacing: 0.5px;
-  }
-
-  .hero p.hero-subtitle {
-    max-width: 620px;
-    margin: 0 auto;
-    color: var(--text-soft);
-    font-size: 1.08rem;
-    font-weight: 500;
-  }
-
-  /* ===== IMAGEM PRINCIPAL ===== */
-  .hero-image-section {
-    padding: 32px 0 16px;
-    text-align: center;
-  }
-
-  .hero-image-wrapper {
-    max-width: 460px;
-    margin: 0 auto;
-    position: relative;
-  }
-
-  .hero-image {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    border-radius: 20px;
-    box-shadow: var(--shadow-md);
-    border: 1px solid var(--border);
-    display: block;
-  }
-
-  .hero-image-wrapper::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    right: -10px;
-    width: 100%;
-    height: 100%;
-    border: 2px solid var(--gold);
-    border-radius: 20px;
-    z-index: -1;
-    opacity: 0.4;
-  }
-
-  /* ===== DIVISOR SUTIL ===== */
-  .divider-section {
-    padding: 28px 0;
-    text-align: center;
-  }
-
-  .divider-line {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    color: var(--gold);
-  }
-
-  .divider-line::before,
-  .divider-line::after {
-    content: "";
-    flex: 1;
-    max-width: 120px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--border-gold), transparent);
-  }
-
-  /* ===== SEÇÃO DE ATENDIMENTO (CARDS) ===== */
-  .service-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 22px;
-    padding: 40px 32px;
-    margin-bottom: 32px;
-    box-shadow: var(--shadow-sm);
-    transition: all 0.35s ease;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .service-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--moss), var(--gold));
-  }
-
-  .service-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
-    border-color: var(--border-gold);
-  }
-
-  .service-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 14px;
-    border-radius: 50px;
-    font-size: 0.82rem;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    margin-bottom: 16px;
-    background: var(--moss-soft);
-    color: var(--moss);
-  }
-
-  .service-badge.featured {
-    background: var(--gold-soft);
-    color: var(--gold-dark);
-    border: 1px solid var(--border-gold);
-  }
-
-  .service-header {
-    margin-bottom: 24px;
-  }
-
-  .service-header h2 {
-    font-size: clamp(1.6rem, 3.2vw, 2.2rem);
-    color: var(--moss-dark);
-    margin-bottom: 12px;
-  }
-
-  .service-header p {
-    color: var(--text-soft);
-    font-size: 1.05rem;
-    line-height: 1.7;
-  }
-
-  /* LISTA DE BENEFÍCIOS */
-  .features-block {
-    background: var(--bg-soft);
-    border-radius: 16px;
-    padding: 24px;
-    margin: 24px 0 28px;
-    border: 1px solid rgba(56, 70, 48, 0.08);
-  }
-
-  .features-title {
-    font-weight: 700;
-    color: var(--moss-dark);
-    font-size: 1.05rem;
-    margin-bottom: 14px;
-  }
-
-  .feature-list {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 12px;
-  }
-
-  .feature-list li {
-    position: relative;
-    padding-left: 26px;
-    color: var(--text);
-    font-size: 0.98rem;
-    font-weight: 600;
-  }
-
-  .feature-list li::before {
-    content: "✨";
-    position: absolute;
-    left: 0;
-    top: 0;
-    font-size: 0.9rem;
-  }
-
-  /* GRID DE OPÇÕES (R$ 69,90 e R$ 139,90) */
-  .options-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    margin-top: 24px;
-  }
-
-  .option-box {
-    background: #ffffff;
-    border: 1px solid var(--border-gold);
-    border-radius: 18px;
-    padding: 28px 22px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    text-align: center;
-    box-shadow: var(--shadow-sm);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .option-box:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-md);
-  }
-
-  .option-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--moss-dark);
-    margin-bottom: 8px;
-  }
-
-  .option-desc {
-    font-size: 0.94rem;
-    color: var(--text-soft);
-    margin-bottom: 20px;
-    line-height: 1.5;
-    flex: 1;
-  }
-
-  .option-price-tag {
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    color: var(--muted);
-    font-weight: 600;
-    margin-bottom: 2px;
-  }
-
-  .option-price {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: var(--gold-dark);
-    margin-bottom: 20px;
-    line-height: 1;
-  }
-
-  /* DESTAQUE DO ATENDIMENTO COMPLETO (R$ 249,90) */
-  .invest-box {
-    background: linear-gradient(180deg, var(--bg-soft) 0%, #ffffff 100%);
-    border: 1px solid var(--border-gold);
-    border-radius: 18px;
-    padding: 28px;
-    text-align: center;
-    margin: 28px 0 20px;
-  }
-
-  .invest-label {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--muted);
-    font-weight: 700;
-    margin-bottom: 4px;
-  }
-
-  .invest-price {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3rem;
-    font-weight: 700;
-    color: var(--moss-dark);
-    line-height: 1;
-  }
-
-  .recommendation-badge {
-    background: var(--moss-soft);
-    border-left: 4px solid var(--moss);
-    border-radius: 0 12px 12px 0;
-    padding: 16px 20px;
-    margin-bottom: 28px;
-    font-size: 0.98rem;
-    color: var(--moss-dark);
-    font-weight: 600;
-    line-height: 1.6;
-  }
-
-  /* BOTÕES CTA */
-  .btn-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    width: 100%;
-    padding: 14px 22px;
-    border-radius: 12px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
-    text-decoration: none;
-    letter-spacing: 0.3px;
-    transition: all 0.3s ease;
-    border: none;
-    cursor: pointer;
-  }
-
-  .btn-primary {
-    background: var(--moss);
-    color: #ffffff;
-    box-shadow: 0 4px 14px rgba(56, 70, 48, 0.2);
-  }
-
-  .btn-primary:hover {
-    background: var(--moss-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(56, 70, 48, 0.3);
-  }
-
-  .btn-gold {
-    background: var(--gold);
-    color: #ffffff;
-    box-shadow: 0 4px 14px rgba(193, 154, 91, 0.25);
-  }
-
-  .btn-gold:hover {
-    background: var(--gold-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(193, 154, 91, 0.35);
-  }
-
-  .btn-btn i {
-    font-size: 18px;
-    transition: transform 0.25s ease;
-  }
-
-  .btn-btn:hover i {
-    transform: translateX(4px);
-  }
-
-  /* ===== DEPOIMENTOS ===== */
-  .depoimentos-section {
-    padding: 32px 0;
-  }
-
-  .depoimentos-header {
-    text-align: center;
-    margin-bottom: 32px;
-  }
-
-  .depoimentos-header h2 {
-    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
-    margin-bottom: 6px;
-  }
-
-  .depoimentos-header p {
-    color: var(--text-soft);
-    font-weight: 500;
-  }
-
-  .depoimentos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
-  }
-
-  .depoimento-item {
-    overflow: hidden;
-    border-radius: 16px;
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow-sm);
-  }
-
-  .depoimento-img {
-    width: 100%;
-    display: block;
-    transition: transform 0.35s ease;
-  }
-
-  .depoimento-item:hover .depoimento-img {
-    transform: scale(1.03);
-  }
-
-  /* ===== MENSAGEM FINAL ===== */
-  .purpose-section {
-    padding: 40px 0 64px;
-    text-align: center;
-  }
-
-  .purpose-box {
-    background: var(--card);
-    border: 1px solid var(--border-gold);
-    border-radius: 22px;
-    padding: 40px 32px;
-    box-shadow: var(--shadow-sm);
-    max-width: 760px;
-    margin: 0 auto;
-  }
-
-  .purpose-text {
-    font-size: 1.12rem;
-    color: var(--text-soft);
-    line-height: 1.75;
-    margin-bottom: 24px;
-    font-weight: 500;
-  }
-
-  .signature {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.8rem;
-    color: var(--moss-dark);
-    font-weight: 700;
-  }
-
-  /* ===== FOOTER ===== */
-  footer {
-    padding: 36px 0;
-    text-align: center;
-    border-top: 1px solid var(--border);
-    background: var(--bg-soft);
-  }
-
-  footer p {
-    color: var(--text-soft);
-    font-size: 0.92rem;
-    font-weight: 600;
-  }
-
-  /* ===== ÍCONE FLUTUANTE DO WHATSAPP ===== */
-  .whatsapp-float {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    width: 60px;
-    height: 60px;
-    background-color: #25d366;
-    color: #ffffff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 32px;
-    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
-    z-index: 999;
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-
-  .whatsapp-float:hover {
-    transform: scale(1.1) translateY(-2px);
-    background-color: #20ba5a;
-    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.5);
-  }
-
-  /* RESPONSIVIDADE */
-  @media (max-width: 680px) {
-    .service-card {
-      padding: 30px 20px;
-    }
-
-    .options-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .feature-list {
-      grid-template-columns: 1fr;
-    }
-
-    .whatsapp-float {
-      bottom: 20px;
-      right: 20px;
-      width: 54px;
-      height: 54px;
-      font-size: 28px;
-    }
-  }
+:root{
+  --bg:#FBF6F3;
+  --card:#FFFFFF;
+  --text:#3D3232;
+  --muted:#8A7A76;
+  --accent:#C48A82;
+  --accent-dark:#A86F67;
+  --accent-soft:rgba(196,138,130,.10);
+  --green:#7A8C62;
+  --green-dark:#687A51;
+  --green-soft:rgba(122,140,98,.09);
+  --gold:#B8956A;
+  --border:rgba(61,50,50,.08);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  padding:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Nunito',sans-serif;
+}
+
+a{
+  text-decoration:none;
+}
+
+.heading-serif{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:500;
+  line-height:1.08;
+  color:var(--text);
+}
+
+.section-label{
+  font-family:'Nunito',sans-serif;
+  font-size:11px;
+  letter-spacing:.25em;
+  text-transform:uppercase;
+  color:var(--green);
+  font-weight:700;
+}
+
+.reveal{
+  animation:fadeUp .8s ease both;
+}
+
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* BOTÕES */
+
+.btn-primary{
+  background:linear-gradient(135deg,var(--accent),var(--accent-dark));
+  color:#fff;
+  padding:15px 30px;
+  border-radius:50px;
+  font-weight:700;
+  font-size:14px;
+  letter-spacing:.01em;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  transition:.3s ease;
+  box-shadow:0 7px 25px rgba(196,138,130,.25);
+  border:none;
+  cursor:pointer;
+}
+
+.btn-primary:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 32px rgba(196,138,130,.35);
+}
+
+.btn-green{
+  background:linear-gradient(135deg,var(--green),var(--green-dark));
+  color:#fff;
+  padding:16px 30px;
+  border-radius:50px;
+  font-weight:700;
+  font-size:14px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  transition:.3s ease;
+  box-shadow:0 8px 28px rgba(122,140,98,.25);
+}
+
+.btn-green:hover{
+  transform:translateY(-2px);
+  box-shadow:0 13px 35px rgba(122,140,98,.35);
+}
+
+.btn-outline{
+  background:transparent;
+  color:var(--accent-dark);
+  padding:14px 24px;
+  border-radius:50px;
+  font-weight:700;
+  font-size:14px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  transition:.3s ease;
+  border:1.5px solid rgba(196,138,130,.65);
+}
+
+.btn-outline:hover{
+  background:var(--accent);
+  color:#fff;
+}
+
+/* WHATSAPP */
+
+.whatsapp-float{
+  position:fixed;
+  bottom:22px;
+  right:22px;
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  background:#25D366;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 8px 28px rgba(37,211,102,.35);
+  z-index:999;
+  transition:.3s ease;
+}
+
+.whatsapp-float:hover{
+  transform:scale(1.07);
+}
+
+/* ORNAMENTO */
+
+.divider{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:16px;
+  margin:15px auto 55px;
+  opacity:.55;
+}
+
+.divider-line{
+  width:75px;
+  height:1px;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    var(--accent),
+    transparent
+  );
+}
+
+/* HERO */
+
+.hero{
+  position:relative;
+  overflow:hidden;
+  padding:78px 22px 65px;
+  text-align:center;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  top:-190px;
+  left:50%;
+  transform:translateX(-50%);
+  width:700px;
+  height:500px;
+  background:radial-gradient(
+    ellipse,
+    rgba(196,138,130,.12),
+    transparent 70%
+  );
+  pointer-events:none;
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  max-width:850px;
+  margin:auto;
+}
+
+.hero h1{
+  font-size:clamp(43px,7vw,70px);
+  margin:15px 0 20px;
+}
+
+.hero h1 em{
+  color:var(--accent);
+  font-style:italic;
+}
+
+.hero-subtitle{
+  max-width:600px;
+  margin:0 auto 36px;
+  color:var(--muted);
+  font-size:17px;
+  line-height:1.75;
+  font-weight:300;
+}
+
+.hero-image{
+  max-width:470px;
+  margin:38px auto 0;
+  border-radius:25px;
+  overflow:hidden;
+  box-shadow:0 25px 70px rgba(196,138,130,.18);
+}
+
+.hero-image img{
+  width:100%;
+  display:block;
+}
+
+/* CHOOSE */
+
+.choose-section{
+  padding:20px 22px 75px;
+}
+
+.choose-title{
+  text-align:center;
+  max-width:650px;
+  margin:0 auto 42px;
+}
+
+.choose-title h2{
+  font-size:clamp(34px,5vw,48px);
+  margin:12px 0;
+}
+
+.choose-title p{
+  color:var(--muted);
+  line-height:1.7;
+  font-weight:300;
+}
+
+.service-grid{
+  max-width:1000px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:25px;
+  align-items:stretch;
+}
+
+.service-card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:38px 32px;
+  position:relative;
+  transition:.4s ease;
+  display:flex;
+  flex-direction:column;
+}
+
+.service-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 20px 55px rgba(196,138,130,.12);
+}
+
+.service-card.complete{
+  border:1.5px solid rgba(122,140,98,.38);
+  background:
+    linear-gradient(
+      180deg,
+      #fff 0%,
+      rgba(122,140,98,.045) 100%
+    );
+  box-shadow:0 20px 60px rgba(122,140,98,.10);
+}
+
+.badge{
+  position:absolute;
+  top:-14px;
+  left:50%;
+  transform:translateX(-50%);
+  background:var(--green);
+  color:white;
+  border-radius:50px;
+  padding:7px 20px;
+  font-size:10px;
+  letter-spacing:.18em;
+  font-weight:700;
+  white-space:nowrap;
+}
+
+.service-number{
+  color:var(--muted);
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.22em;
+  font-weight:700;
+  margin-bottom:12px;
+}
+
+.service-card h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:34px;
+  font-weight:500;
+  line-height:1.05;
+  margin:0 0 13px;
+}
+
+.service-card .intro{
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.7;
+  min-height:70px;
+}
+
+.card-divider{
+  width:45px;
+  height:1px;
+  background:var(--accent);
+  opacity:.45;
+  margin:23px 0;
+}
+
+.card-list{
+  list-style:none;
+  padding:0;
+  margin:0 0 25px;
+}
+
+.card-list li{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  color:var(--text);
+  font-size:14px;
+  line-height:1.5;
+  margin-bottom:12px;
+}
+
+.check{
+  width:21px;
+  height:21px;
+  flex-shrink:0;
+  border-radius:50%;
+  background:var(--accent-soft);
+  color:var(--accent);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:11px;
+  font-weight:bold;
+}
+
+.price{
+  margin-top:auto;
+  padding:23px 0;
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  text-align:center;
+  margin-bottom:20px;
+}
+
+.price-label{
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  font-size:10px;
+  font-weight:700;
+  margin-bottom:5px;
+}
+
+.price-value{
+  font-family:'Cormorant Garamond',serif;
+  font-size:47px;
+  line-height:1;
+  color:var(--accent);
+}
+
+.complete .price-value{
+  color:var(--green);
+}
+
+.price-description{
+  color:var(--muted);
+  font-size:12px;
+  margin-top:6px;
+}
+
+/* DETAILS */
+
+.details-section{
+  padding:35px 22px 85px;
+}
+
+.details-container{
+  max-width:950px;
+  margin:auto;
+}
+
+.details-header{
+  text-align:center;
+  margin-bottom:45px;
+}
+
+.details-header h2{
+  font-size:clamp(34px,5vw,48px);
+  margin:10px 0 14px;
+}
+
+.details-header p{
+  color:var(--muted);
+  max-width:580px;
+  margin:auto;
+  line-height:1.7;
+  font-weight:300;
+}
+
+.details-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:25px;
+}
+
+.detail-box{
+  background:#fff;
+  border-radius:22px;
+  padding:32px;
+  border:1px solid var(--border);
+}
+
+.detail-box h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:27px;
+  font-weight:500;
+  margin:0 0 20px;
+  color:var(--accent-dark);
+}
+
+.step{
+  display:flex;
+  gap:15px;
+  margin-bottom:20px;
+}
+
+.step:last-child{
+  margin-bottom:0;
+}
+
+.step-number{
+  width:30px;
+  height:30px;
+  flex-shrink:0;
+  border-radius:50%;
+  background:var(--accent-soft);
+  color:var(--accent);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'Cormorant Garamond',serif;
+  font-size:18px;
+}
+
+.step strong{
+  display:block;
+  font-size:14px;
+  margin-bottom:3px;
+}
+
+.step p{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.55;
+  margin:0;
+}
+
+/* DESTAQUE */
+
+.highlight-section{
+  padding:0 22px 90px;
+}
+
+.highlight-card{
+  max-width:900px;
+  margin:auto;
+  background:linear-gradient(
+    135deg,
+    rgba(196,138,130,.07),
+    rgba(122,140,98,.07)
+  );
+  border-radius:25px;
+  padding:42px 35px;
+  text-align:center;
+  border:1px solid rgba(196,138,130,.12);
+}
+
+.highlight-card h2{
+  font-size:clamp(30px,5vw,44px);
+  margin:8px 0 14px;
+}
+
+.highlight-card p{
+  max-width:650px;
+  margin:0 auto 25px;
+  color:var(--muted);
+  line-height:1.75;
+  font-weight:300;
+}
+
+/* COMPLETO */
+
+.complete-section{
+  padding:0 22px 90px;
+}
+
+.complete-container{
+  max-width:900px;
+  margin:auto;
+  background:#fff;
+  border-radius:28px;
+  padding:50px 45px;
+  border:1px solid rgba(122,140,98,.16);
+  box-shadow:0 25px 75px rgba(122,140,98,.10);
+  position:relative;
+  overflow:hidden;
+}
+
+.complete-container::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:3px;
+  background:linear-gradient(
+    90deg,
+    var(--accent),
+    var(--green)
+  );
+}
+
+.complete-header{
+  text-align:center;
+  margin-bottom:35px;
+}
+
+.complete-header h2{
+  font-size:clamp(37px,5vw,52px);
+  margin:10px 0;
+}
+
+.complete-header h2 em{
+  color:var(--green);
+  font-style:italic;
+}
+
+.complete-header p{
+  color:var(--muted);
+  font-size:16px;
+  margin:0;
+}
+
+.complete-intro{
+  max-width:650px;
+  margin:0 auto 35px;
+  text-align:center;
+  color:var(--text);
+  line-height:1.8;
+  font-size:16px;
+  font-weight:300;
+}
+
+.investigation{
+  background:var(--green-soft);
+  border-left:3px solid var(--green);
+  border-radius:15px;
+  padding:25px 27px;
+  margin-bottom:30px;
+}
+
+.investigation h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:24px;
+  font-weight:500;
+  color:var(--green-dark);
+  margin:0 0 17px;
+}
+
+.investigation ul{
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px 25px;
+}
+
+.investigation li{
+  font-size:14px;
+  line-height:1.5;
+  display:flex;
+  gap:9px;
+}
+
+.investigation li::before{
+  content:"✦";
+  color:var(--green);
+}
+
+.receive-title{
+  text-align:center;
+  font-family:'Cormorant Garamond',serif;
+  font-size:27px;
+  font-weight:500;
+  margin:30px 0 20px;
+}
+
+.receive-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px 25px;
+  margin-bottom:30px;
+}
+
+.receive-item{
+  display:flex;
+  align-items:flex-start;
+  gap:11px;
+  font-size:14px;
+  line-height:1.5;
+}
+
+.receive-item span:first-child{
+  color:var(--green);
+  font-weight:bold;
+}
+
+/* CTA */
+
+.final-cta{
+  text-align:center;
+  padding:30px 22px 100px;
+}
+
+.final-cta h2{
+  font-size:clamp(35px,5vw,50px);
+  margin:10px 0 14px;
+}
+
+.final-cta p{
+  color:var(--muted);
+  max-width:560px;
+  margin:0 auto 28px;
+  line-height:1.7;
+  font-weight:300;
+}
+
+.small-note{
+  margin-top:14px;
+  color:var(--muted);
+  font-size:11px;
+}
+
+/* MOBILE */
+
+@media(max-width:760px){
+
+  .hero{
+    padding:60px 20px 50px;
+  }
+
+  .hero h1{
+    font-size:45px;
+  }
+
+  .hero-subtitle{
+    font-size:15px;
+  }
+
+  .service-grid,
+  .details-grid{
+    grid-template-columns:1fr;
+  }
+
+  .service-card{
+    padding:34px 25px;
+  }
+
+  .service-card .intro{
+    min-height:auto;
+  }
+
+  .complete-container{
+    padding:42px 22px;
+  }
+
+  .investigation ul,
+  .receive-grid{
+    grid-template-columns:1fr;
+  }
+
+  .highlight-card{
+    padding:35px 23px;
+  }
+
+  .btn-primary,
+  .btn-green,
+  .btn-outline{
+    width:100%;
+  }
+
+  .whatsapp-float{
+    width:55px;
+    height:55px;
+    right:18px;
+    bottom:18px;
+  }
+}
 </style>
 </head>
+
 <body>
 
-  <!-- ===== HERO / CABEÇALHO ===== -->
-  <header class="hero">
-    <div class="container">
-      <span class="hero-tag">Atendimentos Online</span>
-      <h1>✨ MEUS ATENDIMENTOS ✨</h1>
-      <p class="hero-subtitle">Atendimentos online pelo WhatsApp para quem busca clareza, direcionamento e transformação.</p>
-    </div>
-  </header>
+<!-- WHATSAPP -->
+<a
+  href="https://wa.me/message/HYCA7N7T73X4N1"
+  target="_blank"
+  class="whatsapp-float"
+  aria-label="Falar comigo pelo WhatsApp"
+>
+<svg width="27" height="27" viewBox="0 0 24 24" fill="white">
+<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.586-.483-.508-.67-.516l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/>
+</svg>
+</a>
 
-  <main class="container">
 
-    <!-- ===== FOTO PRINCIPAL ===== -->
-    <section class="hero-image-section">
-      <div class="hero-image-wrapper">
-        <img src="https://p16-flow-image-sign.ibyteimg.com/tos-mya-i-uo7y4d541q/rc_vlm/a70269086ebb4a03bb4b50e3e5d97c1b.jpg~tplv-0es2k971ck-image.image?rcl=20260908113159A1AE4295BDA90AFAC7B1&rk3s=8e244e95&rrcfp=935dee89&x-expires=1789443120&x-signature=S2ZvnFzBgRZmUykJpKfC9%2FKJD3Q%3D" alt="Vida Arquetípica — Érika" class="hero-image" onerror="this.style.display='none'">
-      </div>
-    </section>
+<!-- HERO -->
 
-    <!-- DIVISOR -->
-    <div class="divider-section">
-      <div class="divider-line">
-        <i class="ri-sparkling-line"></i>
-      </div>
-    </div>
+<section class="hero reveal">
 
-    <!-- ===== ATENDIMENTO 1: TARÔ + DIRECIONAMENTO ===== -->
-    <article class="service-card">
-      <div class="service-badge">
-        <i class="ri-compass-3-line"></i> Atendimento Pontual
-      </div>
+  <div class="hero-content">
 
-      <div class="service-header">
-        <h2>🔮 LEITURA DE TARÔ + DIRECIONAMENTO ARQUETÍPICO</h2>
-        <p>Ideal para quem possui dúvidas específicas e deseja compreender melhor uma situação, tomar decisões com mais segurança e descobrir quais energias precisa desenvolver neste momento.</p>
-      </div>
+    <p class="section-label">Atendimentos Online</p>
 
-      <div class="features-block">
-        <div class="features-title">Você recebe nesta leitura:</div>
-        <ul class="feature-list">
-          <li>Clareza sobre sua situação atual.</li>
-          <li>Direcionamento para seus desafios.</li>
-          <li>Identificação de possíveis bloqueios.</li>
-          <li>Indicação de arquétipos alinhados.</li>
-        </ul>
-      </div>
+    <h1 class="heading-serif">
+      Encontre <em>clareza</em><br>
+      para o momento que você vive
+    </h1>
 
-      <div class="options-grid">
-        <!-- OPÇÃO 1 -->
-        <div class="option-box">
-          <div>
-            <div class="option-title">1 Pergunta</div>
-            <p class="option-desc">+ 1 Arquétipo e explicação para ancoramento de energia</p>
-          </div>
-          <div>
-            <div class="option-price-tag">Investimento</div>
-            <div class="option-price">R$ 69,90</div>
-            <a href="https://forms.gle/hg97ckbz7Q6KfgwVA" target="_blank" rel="noopener" class="btn-btn btn-primary">
-              Solicitar Leitura <i class="ri-arrow-right-line"></i>
-            </a>
-          </div>
-        </div>
+    <p class="hero-subtitle">
+      Leituras de Tarô e direcionamentos personalizados
+      para compreender melhor o seu momento, enxergar
+      possibilidades e encontrar caminhos mais conscientes.
+    </p>
 
-        <!-- OPÇÃO 2 -->
-        <div class="option-box">
-          <div>
-            <div class="option-title">3 Perguntas</div>
-            <p class="option-desc">+ até 3 Arquétipos + explicação para ancoramento de energia</p>
-          </div>
-          <div>
-            <div class="option-price-tag">Investimento</div>
-            <div class="option-price">R$ 139,90</div>
-            <a href="https://forms.gle/d14RvNEA8iBKNgfr6" target="_blank" rel="noopener" class="btn-btn btn-primary">
-              Solicitar Leitura <i class="ri-arrow-right-line"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </article>
+    <a href="#atendimentos" class="btn-primary">
+      Conhecer os atendimentos
+      <span>↓</span>
+    </a>
 
-    <!-- DIVISOR -->
-    <div class="divider-section">
-      <div class="divider-line">
-        <i class="ri-sparkling-line"></i>
-      </div>
+    <div class="hero-image">
+      <img
+        src="https://p16-flow-image-sign.ibyteimg.com/tos-mya-i-uo7y4d541q/rc_vlm/a70269086ebb4a03bb4b50e3e5d97c1b.jpg~tplv-0es2k971ck-image.image?rcl=20260908113159A1AE4295BDA90AFAC7B1&rk3s=8e244e95&rrcfp=935dee89&x-expires=1789443120&x-signature=S2ZvnFzBgRZmUykJpKfC9%2FKJD3Q%3D"
+        alt="Érika Silva realizando atendimento com Tarô"
+      >
     </div>
 
-    <!-- ===== ATENDIMENTO 2: COMPLETO ===== -->
-    <article class="service-card">
-      <div class="service-badge featured">
-        <i class="ri-star-line"></i> Atendimento Completo &amp; Aprofundado
-      </div>
+  </div>
 
-      <div class="service-header">
-        <h2>🌟 DIRECIONAMENTO ARQUETÍPICO COMPLETO com Tarô e Mapa Astral</h2>
-        <p>Para quem sente que está vivendo padrões repetitivos, bloqueios constantes ou dificuldades em áreas importantes da vida e deseja compreender a raiz do problema.</p>
-      </div>
+</section>
 
-      <div class="features-block">
-        <div class="features-title">Neste atendimento, investigamos:</div>
-        <ul class="feature-list">
-          <li>Tudo o que está impedindo seu avanço.</li>
-          <li>Quais padrões precisam ser transformados.</li>
-        </ul>
-      </div>
 
-      <p style="color: var(--text); font-weight: 500; margin-bottom: 20px; line-height: 1.7;">
-        Você recebe um direcionamento profundo, personalizado e focado no seu momento atual, além da indicação dos arquétipos mais adequados e corretos para você.
+<!-- DIVISOR -->
+
+<div class="divider">
+  <span class="divider-line"></span>
+
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="var(--gold)">
+    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+  </svg>
+
+  <span class="divider-line"></span>
+</div>
+
+
+<!-- ESCOLHA -->
+
+<section class="choose-section" id="atendimentos">
+
+  <div class="choose-title">
+
+    <p class="section-label">Escolha seu atendimento</p>
+
+    <h2 class="heading-serif">
+      Qual momento você está vivendo?
+    </h2>
+
+    <p>
+      Se você possui uma questão específica, a leitura de Tarô pode
+      ser suficiente. Se sente que existe algo mais profundo por trás
+      do que está acontecendo, o atendimento completo é o mais indicado.
+    </p>
+
+  </div>
+
+
+  <div class="service-grid">
+
+
+    <!-- TARÔ -->
+
+    <div class="service-card">
+
+      <p class="service-number">Atendimento I</p>
+
+      <h3>
+        Leitura de Tarô +
+        <em style="color:var(--accent);font-style:italic;">
+          Direcionamento Arquetípico
+        </em>
+      </h3>
+
+      <p class="intro">
+        Para quem possui dúvidas específicas e deseja compreender
+        melhor uma situação, tomar decisões com mais clareza e
+        descobrir quais energias pode desenvolver.
       </p>
 
-      <div class="invest-box">
-        <div class="invest-label">Investimento</div>
-        <div class="invest-price">R$ 249,90</div>
+      <div class="card-divider"></div>
+
+      <ul class="card-list">
+
+        <li>
+          <span class="check">✓</span>
+          <span>Leitura direcionada para suas perguntas</span>
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          <span>Interpretação das cartas</span>
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          <span>Indicação de arquétipos alinhados ao seu momento</span>
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          <span>Explicação para o ancoramento da energia</span>
+        </li>
+
+      </ul>
+
+
+      <!-- OPÇÃO 1 -->
+
+      <div style="
+        border:1px solid var(--border);
+        border-radius:16px;
+        padding:18px;
+        margin-bottom:12px;
+      ">
+
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;">
+
+          <div>
+            <strong style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:500;">
+              1 pergunta
+            </strong>
+
+            <p style="margin:3px 0 0;color:var(--muted);font-size:12px;">
+              + 1 arquétipo
+            </p>
+          </div>
+
+          <strong style="
+            font-family:'Cormorant Garamond',serif;
+            font-size:28px;
+            color:var(--accent);
+            font-weight:500;
+          ">
+            R$ 69,90
+          </strong>
+
+        </div>
+
       </div>
 
-      <div class="recommendation-badge">
-        ⭐ Este é o atendimento mais indicado para quem busca mudanças reais e deseja compreender com profundidade os desafios que está vivendo.
+
+      <!-- OPÇÃO 2 -->
+
+      <div style="
+        border:1px solid rgba(196,138,130,.28);
+        background:var(--accent-soft);
+        border-radius:16px;
+        padding:18px;
+        margin-bottom:25px;
+      ">
+
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;">
+
+          <div>
+            <strong style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:500;">
+              3 perguntas
+            </strong>
+
+            <p style="margin:3px 0 0;color:var(--muted);font-size:12px;">
+              + até 3 arquétipos
+            </p>
+          </div>
+
+          <strong style="
+            font-family:'Cormorant Garamond',serif;
+            font-size:28px;
+            color:var(--accent);
+            font-weight:500;
+          ">
+            R$ 139,90
+          </strong>
+
+        </div>
+
       </div>
 
-      <div style="text-align: center;">
-        <a href="https://forms.gle/oo8hwimk8ioGcXEo6" target="_blank" rel="noopener" class="btn-btn btn-gold" style="max-width: 440px; margin: 0 auto;">
-          Solicitar Meu Atendimento Completo <i class="ri-arrow-right-line"></i>
-        </a>
-      </div>
-    </article>
 
-    <!-- DIVISOR -->
-    <div class="divider-section">
-      <div class="divider-line">
-        <i class="ri-sparkling-line"></i>
-      </div>
+      <a
+        href="https://forms.gle/hg97ckbz7Q6KfgwVA"
+        target="_blank"
+        class="btn-outline"
+      >
+        Quero fazer minha leitura
+      </a>
+
     </div>
 
-    <!-- ===== DEPOIMENTOS ===== -->
-    <section class="depoimentos-section">
-      <div class="depoimentos-header">
-        <h2>Depoimentos de Consulentes</h2>
-        <p>Veja a experiência de quem já realizou um atendimento:</p>
+
+    <!-- COMPLETO -->
+
+    <div class="service-card complete">
+
+      <div class="badge">
+        Mais escolhido
       </div>
 
-      <div class="depoimentos-grid">
-        <div class="depoimento-item">
-          <img src="https://p16-flow-image-sign.ibyteimg.com/tos-mya-i-uo7y4d541q/rc_vlm/321276414276496a93bb8a4ad7edd665.jpg~tplv-0es2k971ck-image.image?rcl=2026090811032300D92C2CDEE6E2E41710&rk3s=8e244e95&rrcfp=935dee89&x-expires=1789441404&x-signature=yiQPd82y0yf1ADQhbCSwc5by6eg%3D" alt="Depoimento 1" class="depoimento-img" onerror="this.style.display='none'">
-        </div>
-        <div class="depoimento-item">
-          <img src="https://p16-flow-image-sign.ibyteimg.com/tos-mya-i-uo7y4d541q/rc_vlm/b98e01e8016e45f88f5c19a6db0d56b2.jpg~tplv-0es2k971ck-image.image?rcl=2026090811032300D92C2CDEE6E2E41710&rk3s=8e244e95&rrcfp=935dee89&x-expires=1789441404&x-signature=bhpi3zuapdTojbQZpfLnZ22f3pU%3D" alt="Depoimento 2" class="depoimento-img" onerror="this.style.display='none'">
-        </div>
-        <div class="depoimento-item">
-          <img src="https://p16-flow-image-sign.ibyteimg.com/tos-mya-i-uo7y4d541q/rc_vlm/da5be3c167164ff7a0ae6116445135ff.jpg~tplv-0es2k971ck-image.image?rcl=2026090811032300D92C2CDEE6E2E41710&rk3s=8e244e95&rrcfp=935dee89&x-expires=1789441404&x-signature=eLLZ8HAi9wcUsoxp5kwTMYFJoTA%3D" alt="Depoimento 3" class="depoimento-img" onerror="this.style.display='none'">
-        </div>
-        <div class="depoimento-item">
-          <img src="https://p16-flow-image-sign.ibyteimg.com/tos-mya-i-uo7y4d541q/rc_vlm/a264435346cb4ff3a98338b3d0cdd8ba.jpg~tplv-0es2k971ck-image.image?rcl=2026090811032300D92C2CDEE6E2E41710&rk3s=8e244e95&rrcfp=935dee89&x-expires=1789441404&x-signature=9bIzTvoFoo9QR5By2%2BWuXMR46nU%3D" alt="Depoimento 4" class="depoimento-img" onerror="this.style.display='none'">
-        </div>
-        <div class="depoimento-item">
-          <img src="https://p16-flow-image-sign.ibyteimg.com/tos-mya-i-uo7y4d541q/rc_vlm/746657563457465a90604537688bbea9.jpg~tplv-0es2k971ck-image.image?rcl=2026090811032300D92C2CDEE6E2E41710&rk3s=8e244e95&rrcfp=935dee89&x-expires=1789441404&x-signature=h%2ByvS79x74yV45C%2F%2FYMqZnnydeE%3D" alt="Depoimento 5" class="depoimento-img" onerror="this.style.display='none'">
-        </div>
-      </div>
-    </section>
+      <p class="service-number">Atendimento II · Mais profundo</p>
 
-    <!-- ===== MENSAGEM FINAL ===== -->
-    <section class="purpose-section">
-      <div class="purpose-box">
-        <p class="purpose-text">
-          Meu propósito não é apenas responder perguntas, mas ajudar você a compreender seus desafios, identificar caminhos possíveis e desenvolver as energias necessárias para construir a vida que deseja.
+      <h3>
+        Direcionamento Arquetípico
+        <em style="color:var(--green);font-style:italic;">
+          Completo
+        </em>
+      </h3>
+
+      <p style="
+        color:var(--green-dark);
+        font-size:14px;
+        font-weight:600;
+        margin:0 0 5px;
+      ">
+        Tarô + Mapa Astral + Direcionamento Arquetípico
+      </p>
+
+      <p class="intro">
+        Para quem deseja compreender seu momento de forma mais
+        profunda, identificar padrões e entender o que pode estar
+        dificultando seu avanço.
+      </p>
+
+      <div class="card-divider" style="background:var(--green);"></div>
+
+      <ul class="card-list">
+
+        <li>
+          <span class="check" style="
+            background:var(--green-soft);
+            color:var(--green);
+          ">✓</span>
+
+          <span>
+            Análise do seu momento atual
+          </span>
+        </li>
+
+        <li>
+          <span class="check" style="
+            background:var(--green-soft);
+            color:var(--green);
+          ">✓</span>
+
+          <span>
+            Investigação de padrões e bloqueios
+          </span>
+        </li>
+
+        <li>
+          <span class="check" style="
+            background:var(--green-soft);
+            color:var(--green);
+          ">✓</span>
+
+          <span>
+            Tarô direcionado para sua situação
+          </span>
+        </li>
+
+        <li>
+          <span class="check" style="
+            background:var(--green-soft);
+            color:var(--green);
+          ">✓</span>
+
+          <span>
+            Análise do Mapa Astral
+          </span>
+        </li>
+
+        <li>
+          <span class="check" style="
+            background:var(--green-soft);
+            color:var(--green);
+          ">✓</span>
+
+          <span>
+            Direcionamento Arquetípico personalizado
+          </span>
+        </li>
+
+      </ul>
+
+      <div class="price">
+
+        <p class="price-label">
+          Investimento
         </p>
-        <div class="signature">Érika - Vida Arquetípica 🪷</div>
+
+        <div class="price-value">
+          R$ 249,90
+        </div>
+
+        <p class="price-description">
+          Atendimento mais completo e profundo
+        </p>
+
       </div>
-    </section>
 
-  </main>
+      <a
+        href="https://forms.gle/d14RvNEA8iBKNgfr6"
+        target="_blank"
+        class="btn-green"
+      >
+        Quero meu direcionamento completo
+      </a>
 
-  <!-- ===== FOOTER ===== -->
-  <footer>
-    <div class="container">
-      <p>Vida Arquetípica · Clareza · Direção · Acolhimento</p>
     </div>
-  </footer>
 
-  <!-- ===== ÍCONE FLUTUANTE DO WHATSAPP ===== -->
-  <a href="https://w
+  </div>
+
+</section>
+
+
+<!-- COMO FUNCIONA -->
+
+<section class="details-section">
+
+  <div class="details-container">
+
+    <div class=
